@@ -1,7 +1,7 @@
-export default function App() {
+export default function User() {
     return (
         <main>
-            App
+            User
         </main>
     )
 }

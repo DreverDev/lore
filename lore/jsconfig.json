@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/controllers": ["./src/utils/database/controllers"],
+      "@/models": ["./src/utils/database/models"],
     }
   }
 }
