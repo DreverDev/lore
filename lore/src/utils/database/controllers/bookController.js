@@ -2,7 +2,7 @@ import Book from '../models/Book';
 import connection from '../connection';
 import validateBook from '../../validators/book';
 
-export const save = async (bookParam) => {
+export const create = async (bookParam) => {
     await connection();
     try {
         validateBook(bookParam);
@@ -13,9 +13,9 @@ export const save = async (bookParam) => {
         };
     }
 
-    if(bookParam.buyDate) bookParam.buyDate = new Date(bookParam.buyDate);
-    if(bookParam.startDate) bookParam.startDate = new Date(bookParam.startDate);
-    if(bookParam.endDate) bookParam.endDate = new Date(bookParam.endDate);
+    if (bookParam.buyDate) bookParam.buyDate = new Date(bookParam.buyDate);
+    if (bookParam.startDate) bookParam.startDate = new Date(bookParam.startDate);
+    if (bookParam.endDate) bookParam.endDate = new Date(bookParam.endDate);
 
     const bookToStore = new Book(bookParam);
 
@@ -32,6 +32,21 @@ export const save = async (bookParam) => {
             message: "Error storing the book"
         };
     }
+};
+
+export const read = async () => {
+    await connection();
+    console.log("si entra")
+    try {
+        const books = await Book.find({});
+        return {
+            status: 200,
+            books,
+        };
+    } catch (error) {
+        console.log(error)
+    }
+
 };
 
 export const update = () => { };

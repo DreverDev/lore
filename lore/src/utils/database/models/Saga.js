@@ -1,10 +1,11 @@
-const {Schema, model} = require("mongoose");
+const {Schema, model, models} = require("mongoose");
 
 const SagaSchema = Schema({
     name: {
         type: String,
+        unique: true,
         required: true,
     },
 });
 
-module.exports = model("Saga", SagaSchema, "sagas");
+module.exports = models.Saga || model("Saga", SagaSchema, "sagas");

@@ -1,7 +1,7 @@
-export default function User() {
+export default function Users() {
     return (
         <main>
-            User
+            Users
         </main>
     )
 }

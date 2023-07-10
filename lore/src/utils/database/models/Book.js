@@ -20,18 +20,18 @@ const BookSchema = Schema({
     sagaIndex: {
         type: Number,
     },
-    saga: {
+    saga: [{
         type: Schema.ObjectId,
         ref: "Saga",
-    },
-    author: {
+    }],
+    author: [{
         type: Schema.ObjectId,
         ref: "Author",
-    },
-    genre: {
+    }],
+    genre: [{
         type: Schema.ObjectId,
         ref: "BookGenre",
-    },
+    }],
     format: {
         type: Schema.ObjectId,
         ref: "Format",

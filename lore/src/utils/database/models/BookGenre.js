@@ -1,10 +1,11 @@
-const {Schema, model} = require("mongoose");
+const {Schema, model, models} = require("mongoose");
 
 const BookGenreSchema = Schema({
     name: {
         type: String,
+        unique: true,
         required: true,
     },
 });
 
-module.exports = model("BookGenre", BookGenreSchema, "bookgenres");
+module.exports = models.BookGenre || model("BookGenre", BookGenreSchema, "bookgenres");
