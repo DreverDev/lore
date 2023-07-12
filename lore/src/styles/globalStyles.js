@@ -28,6 +28,7 @@ const GlobalStyles = createGlobalStyle`
             color: ${props => props.theme.colors.fontHoverColor};
         }
     }
+    
 `;
 
 export default GlobalStyles;

@@ -50,10 +50,11 @@ export const dump = async (elementsParams) => {
 export const read = async () => {
     await connection();
     try {
-        const elements = await Author.find({});
+        const authors = await Author.find({})
+        .sort({name: 1});
         return {
             status: 200,
-            elements,
+            authors,
         };
     } catch (error) {
         console.log(error)

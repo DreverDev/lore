@@ -8,8 +8,8 @@ export const pages = [
         url: "/books"
     },
     {
-        name: "Videogames",
-        url: "/videogames"
+        name: "CreateBook",
+        url: "/books/create"
     },
     {
         name: "Users",

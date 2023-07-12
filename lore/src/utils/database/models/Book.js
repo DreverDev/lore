@@ -20,6 +20,10 @@ const BookSchema = Schema({
     sagaIndex: {
         type: Number,
     },
+    finished: {
+        type: Boolean,
+        default: false,
+    },
     saga: [{
         type: Schema.ObjectId,
         ref: "Saga",
