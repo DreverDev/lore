@@ -10,11 +10,5 @@ export const pages = [
     {
         name: "CreateBook",
         url: "/books/create"
-    },
-    {
-        name: "Users",
-        url: "/users"
-    },
-    
-    
+    }
 ]
