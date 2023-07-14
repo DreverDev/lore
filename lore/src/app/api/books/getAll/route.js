@@ -3,5 +3,12 @@ import { getAll } from '../../../../utils/database/controllers/bookController'
 
 export async function GET() {
     const { elements } = await getAll();
-    return NextResponse.json({ elements });
+    // return NextResponse.json({ elements });
+    return NextResponse.json({
+        status: 200,
+        elements,
+        headers: {
+            'Cache-Control': 'no-store, max-age=0',
+        },
+    });
 }
