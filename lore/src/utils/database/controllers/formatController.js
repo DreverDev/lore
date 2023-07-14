@@ -47,13 +47,13 @@ export const dump = async (elementsParams) => {
     }
 };
 
-export const read = async () => {
+export const getAll = async () => {
     await connection();
     try {
-        const elements = await Format.find({});
+        const formats = await Format.find({});
         return {
             status: 200,
-            elements,
+            formats,
         };
     } catch (error) {
         console.log(error)

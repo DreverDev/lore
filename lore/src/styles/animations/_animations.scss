@@ -1,0 +1,43 @@
+@keyframes goingIn {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes goingOut {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        z-index: -1;
+    }
+
+    100% {
+        opacity: 0.5;
+        z-index: 5;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 0.5;
+        z-index: 5;
+    }
+
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }
+}

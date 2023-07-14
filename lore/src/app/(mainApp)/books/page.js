@@ -1,14 +1,16 @@
 "use client";
 import BookTable from "@/components/tables/BookTable";
 import { useEffect, useState } from "react";
-import {getBooks as getBooksController} from '@/utils/frontControllers/controller';
+import { useBooks } from "@/hooks/useBooks";
 
 export default function Books() {
 
-    const [books, setBooks] = useState([])
+    const [books, setBooks] = useState([]);
+
+    const { getAll } = useBooks();
 
     const getBooks = async () => {
-        setBooks(await getBooksController());
+        setBooks(await getAll());
     }
 
     useEffect(() => {

@@ -1,21 +1,30 @@
-import { useState } from "react";
-import styled from "styled-components";
+"use client";
+
 import moment from "moment";
 import { faSquareCheck, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {bookFields as headings} from '@/utils/fields/fields';
+import { bookFields as headings } from '@/utils/fields/fields';
+import { useRouter } from "next/navigation";
+
+import styles from '@/styles/components/tables/BookTable.module.scss';
 
 
 const BookTable = ({ books }) => {
 
+    const router = useRouter();
+
+    const handleRowClick = (id) => {
+        router.push(`/books/${id}`)
+    }
+
     return (
-        <div className="table-container">
+        <div className={styles.tableContainer}>
             <table>
                 <thead>
                     <tr>
                         {
                             headings.map(heading => {
-                                return <th key={heading}>{heading}</th>
+                                return heading == "#" ? <th key={heading} className={styles.center}>{heading}</th> : <th key={heading}>{heading}</th>
                             })
                         }
                     </tr>
@@ -24,31 +33,37 @@ const BookTable = ({ books }) => {
                     {
                         books.map((book, index) => {
                             return (
-                                <tr key={book._id}>
-                                    <td>{index + 1}</td>
+                                <tr onClick={() => handleRowClick(book._id)} key={book._id}>
+                                    <td className={styles.center}>{index + 1}</td>
                                     <td>{book.title}</td>
-                                    <td>
-                                        {
-                                            book.saga ? (
-                                                book.saga.map(saga => <span key={saga._id}>{saga.name}</span>)
-                                            ) : null
-                                        }
+                                    <td >
+                                        <div className={styles.array}>
+                                            {
+                                                book.saga ? (
+                                                    book.saga.map(saga => <span key={saga._id}>{saga.name}</span>)
+                                                ) : null
+                                            }
+                                        </div>
                                     </td>
                                     <td>
-                                        {
-                                            book.author ? (
-                                                book.author.map(author => <span key={author._id}>{author.name}</span>)
-                                            ) : null
-                                        }
+                                        <div className={styles.array}>
+                                            {
+                                                book.author ? (
+                                                    book.author.map(author => <span key={author._id}>{author.name}</span>)
+                                                ) : null
+                                            }
+                                        </div>
                                     </td>
                                     <td>{moment.utc(book.buyDate).format('DD/MM/YY')}</td>
                                     <td>{book.finished ? <FontAwesomeIcon icon={faSquareCheck} /> : <FontAwesomeIcon icon={faSquare} />}</td>
                                     <td>
-                                        {
-                                            book.genre ? (
-                                                book.genre.map(genre => <span key={genre._id}>{genre.name}</span>)
-                                            ) : null
-                                        }
+                                        <div className={styles.array}>
+                                            {
+                                                book.genre ? (
+                                                    book.genre.map(genre => <span key={genre._id}>{genre.name}</span>)
+                                                ) : null
+                                            }
+                                        </div>
                                     </td>
                                     <td>{book.format ? book.format.name : null}</td>
                                     <td>{book.price}</td>

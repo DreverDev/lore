@@ -47,7 +47,7 @@ export const dump = async (elementsParams) => {
     }
 };
 
-export const read = async () => {
+export const getAll = async () => {
     await connection();
     try {
         const authors = await Author.find({})

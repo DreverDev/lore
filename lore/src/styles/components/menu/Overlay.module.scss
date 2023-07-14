@@ -1,0 +1,20 @@
+@import '/src/styles/animations/animations';
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    height: 100%;
+    width: 100%;
+    z-index: 5;
+    cursor: pointer;
+
+    &.open{
+        animation: fadeIn 300ms forwards;
+    }
+
+    &.close{
+        animation: fadeOut 300ms forwards;
+    }
+}

@@ -1,0 +1,61 @@
+@import '/src/styles/base/variables';
+
+.checkInputs {
+
+    .mainLabel {
+        font-weight: bold;
+
+        &:after {
+            content: ":";
+            color: white;
+        }
+    }
+
+    .checkInputsGroup {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .checkInput {
+            width: 25%;
+            padding: 3px;
+        }
+    }
+}
+
+.checkButton {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    background-color: $color_tableBorderColor;
+    border-radius: 5px;
+    transition: background-color 100ms ease-in-out;
+    transition: opacity 100ms ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+        opacity: 0.5;
+        label{
+            font-weight: bold;
+        }
+    }
+
+    &.checked {
+        background-color: $color_tableHoverColor;
+        box-shadow: inset 0 0 0 1px $color_tableBorderColor;
+    }
+
+    label{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    svg,
+    label {
+        padding-left: 3px;
+        padding-right: 3px;
+        cursor: pointer;
+        transition: font-weight 125ms ease-in-out;
+    }
+}

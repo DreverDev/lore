@@ -47,13 +47,13 @@ export const dump = async (elementsParams) => {
     }
 };
 
-export const read = async () => {
+export const getAll = async () => {
     await connection();
     try {
-        const elements = await Saga.find({});
+        const sagas = await Saga.find({});
         return {
             status: 200,
-            elements,
+            sagas,
         };
     } catch (error) {
         console.log(error)

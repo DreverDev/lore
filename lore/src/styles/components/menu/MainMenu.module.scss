@@ -1,0 +1,41 @@
+@import '/src/styles/base/variables';
+@import '/src/styles/animations/animations';
+
+.mainMenu {
+    background-color: $color_primaryColor;
+    position: absolute;
+    top: $size_header;
+    left: 0;
+    width: 20%;
+    height: calc(100% - $size_header);
+    z-index: 10;
+    padding: 30px;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    // 
+
+    &.open{
+        animation: goingIn 300ms forwards;
+    }
+
+    &.close{
+        animation: goingOut 300ms forwards;
+    }
+
+    @media(max-width: $breakpoint_mobileBreakpoint) {
+        width: 75%;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+
+        li {
+            list-style: none;
+            padding: 5px;
+
+            a {
+                display: inline-block;
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+    @import './variables';
+
+    html {
+        box-sizing: border-box;
+        overflow: auto;
+        scrollbar-width: thin;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+    }
+
+    body {
+        font-family: $font_primaryFont;
+        color: $color_fontColor;
+        background-color: $color_bgColor;
+        margin: 0;
+        height: 100vh;
+        font-size: $fontSize_regular;
+    }
+
+    main {
+        padding-top: 25px;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        transition: all ease-in-out 100ms;
+
+        &:hover {
+            color: $color_fontHoverColor;
+        }
+    }

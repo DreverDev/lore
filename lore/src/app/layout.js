@@ -1,4 +1,4 @@
-import '@/styles/styles.css';
+import '@/styles/base/base.scss'
 
 export const metadata = {
     title: 'Home',

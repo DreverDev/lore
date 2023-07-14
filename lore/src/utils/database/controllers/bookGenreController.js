@@ -47,13 +47,13 @@ export const dump = async (elementsParams) => {
     }
 };
 
-export const read = async () => {
+export const getAll = async () => {
     await connection();
     try {
-        const elements = await BookGenre.find({});
+        const bookGenres = await BookGenre.find({});
         return {
             status: 200,
-            elements,
+            bookGenres,
         };
     } catch (error) {
         console.log(error)

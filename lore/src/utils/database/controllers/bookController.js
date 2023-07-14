@@ -38,10 +38,10 @@ export const create = async (param) => {
     }
 };
 
-export const read = async () => {
+export const getAll = async () => {
     await connection();
     try {
-        const books = await Book.find({})
+        const elements = await Book.find({})
             .populate({ path: 'saga', select: '_id name' })
             .populate({ path: 'author', select: '_id name' })
             .populate({ path: 'genre', select: '_id name' })
@@ -49,13 +49,30 @@ export const read = async () => {
             .sort({buyDate: 1, saga: 1, sagaIndex: 1});
         return {
             status: 200,
-            books,
+            elements,
         };
     } catch (error) {
         console.log(error)
     }
 
 };
+
+export const getOne = async (id) => {
+    await connection();
+    try {
+        const element = await Book.findById(id)
+            .populate({ path: 'saga', select: '_id name' })
+            .populate({ path: 'author', select: '_id name' })
+            .populate({ path: 'genre', select: '_id name' })
+            .populate({ path: 'format', select: '_id name' });
+        return {
+            status: 200,
+            element,
+        };
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 export const update = async ({ id, params }) => {
     console.log(params)

@@ -1,0 +1,21 @@
+@import '/src/styles/base/variables';
+
+.bookForm{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+    form{
+        width: 50%;
+        
+        .submitContainer{
+            display: flex;
+            justify-content: center;
+
+            input[type="submit"]{
+                padding: 3px 5px 3px 5px;
+                cursor: pointer;
+            }
+        }
+    }
+}

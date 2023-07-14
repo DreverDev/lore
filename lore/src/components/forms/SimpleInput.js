@@ -1,25 +1,18 @@
-"use client";
-import { styled } from "styled-components";
+import styles from '@/styles/components/forms/inputs/SimpleInput.module.scss'
 
-const StyledSimpleInputGroup = styled.div`
-    label{
-        display: block;
-    }
-
-    input{
-        display: block;
-    }
-`;
-
-const SimpleInput = ({ name, type, text }) => {
+const SimpleInput = ({ name, type, text, required, changed }) => {
     if (!name || !text || !type) return;
     return (
-        <StyledSimpleInputGroup >
+        <div className={`${styles.simpleInput} ${type == "checkbox" ? styles.checkbox : ""}`} >
             <label htmlFor={name}>{text}</label>
             <input
+                name={name}
                 type={type}
+                step="any"
+                required={required ? true : false}
+                onChange={changed}
             />
-        </StyledSimpleInputGroup >
+        </div >
     )
 }
 

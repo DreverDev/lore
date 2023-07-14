@@ -4,6 +4,7 @@
       "@/*": ["./src/*"],
       "@/controllers": ["./src/utils/database/controllers"],
       "@/models": ["./src/utils/database/models"],
+      "@/style": ["./src/styles/components"],
     }
   }
 }

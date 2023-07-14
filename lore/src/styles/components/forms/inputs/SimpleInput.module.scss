@@ -1,0 +1,35 @@
+@import '/src/styles/base/variables';
+
+.simpleInput {
+    margin-bottom: 10px;
+
+    input:not([type="checkbox"]) {
+        width: 100%;
+    }
+
+    label {
+        font-weight: bold;
+
+        &:after {
+            content: ":";
+            color: white;
+        }
+    }
+
+    &.checkbox{
+        display: flex;
+        align-items: center;
+        
+        input{
+            cursor: pointer;
+        }
+    }
+
+    &:not(.checkbox) {
+
+        label, input {
+            padding: 3px;
+            display: block;
+        }
+    }
+}
