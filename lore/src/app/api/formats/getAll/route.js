@@ -3,6 +3,5 @@ import { getAll as action } from '../../../../utils/database/controllers/formatC
 
 export async function GET() {
     const { formats } = await action();
-    console.log(formats)
     return NextResponse.json(formats);
 }

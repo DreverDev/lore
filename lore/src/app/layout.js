@@ -1,14 +1,17 @@
 import '@/styles/base/base.scss'
 
-export const metadata = {
-    title: 'Home',
-    description: 'Home of Lore',
-}
+import Header from '@/components/layout/Header';
+import { Inter } from 'next/font/google'
 
-export default function RootLayout({ children }) {
+const inter = Inter({ subsets: ['latin'] })
+
+export default function MainApp({ children }) {
     return (
         <html lang="en">
-            {children}
+            <body className={inter.className}>
+                <Header />
+                {children}
+            </body>
         </html>
     )
 }

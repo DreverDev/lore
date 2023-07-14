@@ -54,7 +54,7 @@ const BookForm = () => {
     return (
         <div className={styles.bookForm}>
             {
-                authors.length ? (
+                authors.length && sagas.length && genres.length && formats.length ? (
                     <form onSubmit={(e) => { handleSubmit(e) }}>
                         <SimpleInput name='title' type='text' text='Title' required changed={changed} />
                         <SimpleInput name='price' type='number' text='Price' changed={changed} />
@@ -71,7 +71,7 @@ const BookForm = () => {
                             <input type="submit" value="Submit"/>
                         </div>
                     </form>
-                ) : null
+                ) : <p>Loding form</p>
             }
 
         </div>
