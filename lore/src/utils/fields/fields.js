@@ -1,1 +1,1 @@
-export const bookFields = ["#", "Title", "Sagas", "Authors", "Buy Date", "Finished", "Genre", "Format", "Price"];
+export const bookFields = ["#", "Title", "Sagas", "Authors", "Index Saga", "Buy Date", "Start Date", "End Date", "Finished", "Genre", "Format", "Price"];

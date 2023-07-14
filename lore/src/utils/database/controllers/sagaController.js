@@ -1,10 +1,12 @@
 import Saga from '../models/Saga';
 import connection from '../connection';
+import { getColor } from '@/utils/functionalities/getColor';
 
 export const create = async (authorParam) => {
     await connection();
 
-    const elementToStore = new Saga(authorParam);
+    let elementToStore = new Saga(authorParam);
+    elementToStore.color = getColor();
 
     try {
         const storedElement = await elementToStore.save();
@@ -51,6 +53,7 @@ export const getAll = async () => {
     await connection();
     try {
         const sagas = await Saga.find({});
+
         return {
             status: 200,
             sagas,

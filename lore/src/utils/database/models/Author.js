@@ -6,6 +6,7 @@ const AuthorSchema = Schema({
         required: true,
         unique: true,
     },
+    color: String,
 });
 
 module.exports = models.Author || model("Author", AuthorSchema, "authors");

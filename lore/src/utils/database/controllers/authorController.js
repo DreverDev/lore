@@ -1,10 +1,12 @@
 import Author from '../models/Author';
 import connection from '../connection';
+import { getColor } from '@/utils/functionalities/getColor';
 
 export const create = async (authorParam) => {
     await connection();
 
     const elementToStore = new Author(authorParam);
+    elementToStore.color = getColor();
 
     try {
         const storedElement = await elementToStore.save();
@@ -52,6 +54,7 @@ export const getAll = async () => {
     try {
         const authors = await Author.find({})
         .sort({name: 1});
+
         return {
             status: 200,
             authors,

@@ -20,7 +20,6 @@ export const useBooks = () => {
     }
 
     const create = async (newBook) => {
-        console.log(newBook)
 
         try {
 

@@ -6,6 +6,7 @@ const BookGenreSchema = Schema({
         unique: true,
         required: true,
     },
+    color: String,
 });
 
 module.exports = models.BookGenre || model("BookGenre", BookGenreSchema, "bookgenres");

@@ -1,10 +1,12 @@
 import BookGenre from '../models/BookGenre';
 import connection from '../connection';
+import { getColor } from '@/utils/functionalities/getColor';
 
 export const create = async (param) => {
     await connection();
 
     const elementToStore = new BookGenre(param);
+    elementToStore.color = getColor();
 
     try {
         const storedElement = await elementToStore.save();
@@ -51,6 +53,7 @@ export const getAll = async () => {
     await connection();
     try {
         const bookGenres = await BookGenre.find({});
+
         return {
             status: 200,
             bookGenres,

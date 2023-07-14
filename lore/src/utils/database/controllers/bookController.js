@@ -42,10 +42,10 @@ export const getAll = async () => {
     await connection();
     try {
         const elements = await Book.find({})
-            .populate({ path: 'saga', select: '_id name' })
-            .populate({ path: 'author', select: '_id name' })
-            .populate({ path: 'genre', select: '_id name' })
-            .populate({ path: 'format', select: '_id name' })
+            .populate({ path: 'saga', select: '_id name color' })
+            .populate({ path: 'author', select: '_id name color' })
+            .populate({ path: 'genre', select: '_id name color' })
+            .populate({ path: 'format', select: '_id name color' })
             .sort({buyDate: 1, saga: 1, sagaIndex: 1});
         return {
             status: 200,
@@ -61,10 +61,10 @@ export const getOne = async (id) => {
     await connection();
     try {
         const element = await Book.findById(id)
-            .populate({ path: 'saga', select: '_id name' })
-            .populate({ path: 'author', select: '_id name' })
-            .populate({ path: 'genre', select: '_id name' })
-            .populate({ path: 'format', select: '_id name' });
+            .populate({ path: 'saga', select: '_id name color' })
+            .populate({ path: 'author', select: '_id name color' })
+            .populate({ path: 'genre', select: '_id name color' })
+            .populate({ path: 'format', select: '_id name color' });
         return {
             status: 200,
             element,

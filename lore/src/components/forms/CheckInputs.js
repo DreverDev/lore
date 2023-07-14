@@ -1,6 +1,6 @@
 import styles from '@/styles/components/forms/inputs/CheckInputs.module.scss';
 import { useState } from 'react';
-import { faSquareCheck, faSquare } from '@fortawesome/free-solid-svg-icons';
+import { faSquareCheck, faSquare, faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CheckButton = ({ element, state, setState }) => {
@@ -31,19 +31,30 @@ const CheckButton = ({ element, state, setState }) => {
 
 const CheckInputs = ({ name, text, elements, state, setState }) => {
 
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleChecks = () => {
+        isOpen ? setIsOpen(false) : setIsOpen(true);
+    }
+
     return (
         <div className={styles.checkInputs}>
-            <label htmlFor={name} className={styles.mainLabel}>{text}</label>
-            <div className={styles.checkInputsGroup}>
-                {
-                    elements.map(element => {
-                        return (
-                            <div key={element._id} className={styles.checkInput}>
-                                <CheckButton element={element} state={state} setState={setState} />
-                            </div>
-                        )
-                    })
-                }
+            <label htmlFor={name} className={styles.mainLabel} onClick={toggleChecks}>
+                <span>{text}</span>
+                <FontAwesomeIcon className={styles.svg} icon={isOpen ? faChevronUp : faChevronDown} />
+            </label>
+            <div className={`${styles.dropdown} ${isOpen ? styles.open : styles.close}`}>
+                <div className={styles.checkInputsGroup}>
+                    {
+                        elements.map(element => {
+                            return (
+                                <div key={element._id} className={styles.checkInput}>
+                                    <CheckButton element={element} state={state} setState={setState} />
+                                </div>
+                            )
+                        })
+                    }
+                </div>
             </div>
         </div >
     );

@@ -5,16 +5,43 @@ import { faSquareCheck, faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { bookFields as headings } from '@/utils/fields/fields';
 import { useRouter } from "next/navigation";
-
+import { useDates } from "@/hooks/useDates";
 import styles from '@/styles/components/tables/BookTable.module.scss';
+import { useBookTableFormat } from "@/hooks/formatting/useBookTableFormat";
 
+const SimpleTd = ({ text, center }) => {
+    return <td className={center ? styles.center : ''}>{text}</td>;
+}
+
+const ComplexTd = ({ elements }) => {
+
+    return (
+        <td >
+            <div className={styles.array}>
+                {
+                    elements ? (
+                        elements.map(element => {
+                            return <span key={element._id} style={{backgroundColor: element.color}}>{element.name}</span>
+                        })
+                    ) : null
+                }
+            </div>
+        </td>
+    )
+}
+
+const CheckTd = ({ checked, center }) => {
+    return <td className={center ? styles.center : ''}><FontAwesomeIcon icon={checked ? faSquareCheck : faSquare} /></td>
+}
 
 const BookTable = ({ books }) => {
+
+    const { tableFormat } = useDates();
 
     const router = useRouter();
 
     const handleRowClick = (id) => {
-        router.push(`/books/${id}`)
+        router.push(`/books/${id}`);
     }
 
     return (
@@ -34,39 +61,18 @@ const BookTable = ({ books }) => {
                         books.map((book, index) => {
                             return (
                                 <tr onClick={() => handleRowClick(book._id)} key={book._id}>
-                                    <td className={styles.center}>{index + 1}</td>
-                                    <td>{book.title}</td>
-                                    <td >
-                                        <div className={styles.array}>
-                                            {
-                                                book.saga ? (
-                                                    book.saga.map(saga => <span key={saga._id}>{saga.name}</span>)
-                                                ) : null
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className={styles.array}>
-                                            {
-                                                book.author ? (
-                                                    book.author.map(author => <span key={author._id}>{author.name}</span>)
-                                                ) : null
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>{moment.utc(book.buyDate).format('DD/MM/YY')}</td>
-                                    <td>{book.finished ? <FontAwesomeIcon icon={faSquareCheck} /> : <FontAwesomeIcon icon={faSquare} />}</td>
-                                    <td>
-                                        <div className={styles.array}>
-                                            {
-                                                book.genre ? (
-                                                    book.genre.map(genre => <span key={genre._id}>{genre.name}</span>)
-                                                ) : null
-                                            }
-                                        </div>
-                                    </td>
-                                    <td>{book.format ? book.format.name : null}</td>
-                                    <td>{book.price}</td>
+                                    <SimpleTd text={index + 1} center />
+                                    <SimpleTd text={book.title} />
+                                    <ComplexTd elements={book.saga} />
+                                    <ComplexTd elements={book.author} />
+                                    <SimpleTd text={book.sagaIndex} center />
+                                    <SimpleTd text={tableFormat(book.buyDate)} center />
+                                    <SimpleTd text={tableFormat(book.startDate)} center />
+                                    <SimpleTd text={tableFormat(book.endDate)} center />
+                                    <CheckTd checked={book.finished ? true : false} center />
+                                    <ComplexTd elements={book.genre} />
+                                    <SimpleTd text={book.format ? book.format.name : null} center />
+                                    <SimpleTd text={book.price} center />
                                 </tr>
                             )
                         })

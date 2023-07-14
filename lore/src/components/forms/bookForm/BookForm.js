@@ -10,8 +10,11 @@ import { useSagas } from "@/hooks/useSagas";
 import { useGenres } from "@/hooks/useGenres";
 import { useFormats } from "@/hooks/useFormats";
 import SelectInput from "../SelectInput";
+import { useRouter } from "next/navigation";
 
 const BookForm = () => {
+
+    const router = useRouter();
 
     const { form, changed } = useForm({});
 
@@ -38,13 +41,14 @@ const BookForm = () => {
         setFormats(await getFormats());
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let newBook = form;
         newBook.author = selectedAuthors;
         newBook.saga = selectedSagas;
         newBook.genre = selectedGenres;
-        createBook(newBook);
+        const data = await createBook(newBook);
+        if(data.status == 200) router.push("/books");
     }
 
     useEffect(() => {
