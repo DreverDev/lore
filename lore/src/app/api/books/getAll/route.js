@@ -7,8 +7,5 @@ export async function GET() {
     return NextResponse.json({
         status: 200,
         elements,
-        headers: {
-            'Cache-Control': 'no-store, max-age=0',
-        },
     });
 }

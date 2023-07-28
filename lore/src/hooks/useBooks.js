@@ -1,7 +1,7 @@
 export const useBooks = () => {
     const getAll = async () => {
         try {
-            const response = await fetch('/api/books/getAll');
+            const response = await fetch('/api/books/getAll', { cache: 'no-store' });
             const json = await response.json();
             return json.elements;
         } catch (error) {
