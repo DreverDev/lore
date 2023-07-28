@@ -6,6 +6,8 @@ import Format from '../models/Format';
 import connection from '../connection';
 import validateBook from '../../validators/book';
 
+export const revalidate = 0;
+
 export const create = async (param) => {
     await connection();
     try {
