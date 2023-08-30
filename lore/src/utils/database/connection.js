@@ -1,11 +1,15 @@
-import mongoose, { get } from 'mongoose';
-import getConfig from 'next/config';
+import mongoose from 'mongoose';
+
+let isConnected = false;
 
 export default async () => {
+    if(isConnected)return;
     try {
-        await mongoose.connect('mongodb+srv://didacr97:ZpQT6hdu6MHiy8ik@loredb.jj0tv5e.mongodb.net/LoreDB');
+        if(!process.env.atlasURI) throw new Error("undefined db URI");
+        await mongoose.connect(process.env.atlasURI);
+        isConnected = true;
     } catch (error) {
         console.log(error);
-        throw new Error("Error connecting to database");
+        throw error;
     }
 };
