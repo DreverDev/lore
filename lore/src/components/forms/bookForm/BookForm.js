@@ -75,7 +75,7 @@ const BookForm = () => {
                             <input type="submit" value="Submit"/>
                         </div>
                     </form>
-                ) : <p>Loding form</p>
+                ) : <p>Loading form</p>
             }
 
         </div>
