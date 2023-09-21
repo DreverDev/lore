@@ -10,8 +10,6 @@ import styles from '@/styles/components/header/Header.module.scss';
 
 const Header = () => {
 
-  const [isOpen, setIsOpen] = useState(false);
-
   return (
     <header className={styles.header}>
       <div className={styles.headerTopBar}>
@@ -22,12 +20,9 @@ const Header = () => {
           <h1>Atlas Mundus</h1>
         </div>
         <div>
-          <Hamburger toggled={isOpen} toggle={setIsOpen} />
+          <MainMenu />
         </div>
       </div>
-
-      <MainMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-      <Overlay isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>
   )
 }

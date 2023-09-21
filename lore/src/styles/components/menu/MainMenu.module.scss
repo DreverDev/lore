@@ -2,38 +2,61 @@
 @import '/src/styles/animations/animations';
 
 .mainMenu {
-    background-color: $color_primaryColor;
-    position: absolute;
-    top: $size_header;
-    left: 0;
-    width: 20%;
-    height: calc(100% - $size_header);
-    z-index: 10;
-    padding: 30px;
-    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    position: relative;
 
-    &.open{
-        animation: goingIn 300ms forwards;
+    .hamburguer {
+        z-index: 10;
     }
 
-    &.close{
-        animation: goingOut 300ms forwards;
-    }
+    .nav {
+        transform-origin: top right;
+        transition: transform 0.3s;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 16rem;
+        background-color: #1C2335;
+        color: white;
+        border-radius: 0.25rem;
 
-    @media(max-width: $breakpoint_mobileBreakpoint) {
-        width: 75%;
-    }
+        &.opened {
+            transform: scale(1);
+        }
 
-    ul {
-        display: flex;
-        flex-direction: column;
+        &.closed {
+            transform: scale(0);
+        }
 
-        li {
-            list-style: none;
-            padding: 5px;
+        ul {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
 
-            a {
-                display: inline-block;
+            li {
+                list-style: none;
+                padding: 10px 5px;
+
+                .navLink {
+                    font-size: 15px;
+                    position: relative;
+
+                    span {
+                        position: absolute;
+                        bottom: -4px;
+                        left: 0px;
+                        background-color: white;
+                        opacity: 0.10;
+                        transform-origin: left;
+                        transition: all 300ms;
+                        height: 2px;
+                        width: 0;
+                    }
+
+                    &:hover span {
+                        width: 100%;
+                    }
+                }
             }
         }
     }
