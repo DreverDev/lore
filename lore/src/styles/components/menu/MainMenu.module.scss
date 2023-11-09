@@ -4,6 +4,7 @@
 .mainMenu {
     display: flex;
     position: relative;
+    z-index: 30;
 
     .hamburguer {
         z-index: 10;

@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Atlas Mundus - Books',
+    title: 'Wolf Tales - Books',
     description: 'Books section in Atlas Mundus',
 }
 

@@ -22,7 +22,7 @@
     }
 
     main {
-        padding-top: 25px;
+        height: calc(100vh - $size_header);
     }
 
     a {

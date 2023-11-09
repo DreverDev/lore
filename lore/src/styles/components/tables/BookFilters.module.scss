@@ -1,0 +1,9 @@
+@import '/src/styles/base/variables';
+
+.select{
+    background-color: $color_primaryColor;
+    color: $color_fontColor;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 9999px;
+}

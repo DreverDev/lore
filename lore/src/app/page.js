@@ -1,5 +1,5 @@
 export const metadata = {
-    title: 'Atlas Mundus - Home',
+    title: 'Wolf Tales - Home',
     description: 'Home of Atlas Mundus',
 }
 
